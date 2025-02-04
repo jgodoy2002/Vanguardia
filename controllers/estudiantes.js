@@ -1,4 +1,4 @@
-const {request,response} =require("../app");
+const {request,response} =require("express");
 const getAllStudents = async (request,response)=>{
     response.status(200).json({
         'status':200,

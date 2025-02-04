@@ -1,2 +1,17 @@
-//ADD UPDATE DESACTIVAR, SEARCH ALL, SEARCH BY ID, 
-//ID, NOMRBRE, DIRECCION, MAGIA, STATUS,SUPERPODER
+
+var router = require('express').Router();
+const { //ADD, UPDATE ELIMINAR, BUSCAR, AGREGAR MIEMBROS 
+    searchHechizeros,
+    createHechizero,
+    updateHechizero,
+    deleteHechizero,
+    searchHechizero,
+} = require("../controllers/hechizeros.js");
+
+router.get('/',searchHechizeros)
+router.get('/:hechizeroID',searchHechizero)
+router.post('/',createHechizero)
+router.put('/hechizeroID',updateHechizero)
+router.delete('/hechizeroID',deleteHechizero)
+
+module.exports=router;
