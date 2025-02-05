@@ -8,8 +8,8 @@ const { //ADD, UPDATE ELIMINAR, BUSCAR, AGREGAR MIEMBROS
     searchHechizero,
 } = require("../controllers/hechizeros.js");
 
-router.get('/',searchHechizeros)
-router.get('/:hechizeroID',searchHechizero)
+router.get('/hechizeros',searchHechizeros)
+router.get('/hechizeroID',searchHechizero)
 router.post('/',createHechizero)
 router.put('/hechizeroID',updateHechizero)
 router.delete('/hechizeroID',deleteHechizero)

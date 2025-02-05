@@ -1,5 +1,13 @@
 const {request,response} =require("express");
 
+const gremio = {
+    id:1,
+    nombre:'Gremio del Fuego',
+    casas: 3,
+    cantidad: 50,
+    status: true
+}
+
 const searchGremio = async(req,res)=>{
     const id = Number(req.params.id);
     const gremio = find(gremio => gremio.id === id);
@@ -47,11 +55,17 @@ const getAllMiembros = async(res,req)=>{
 }
 
 const getGremios=async(res,req)=>{
+    const gremios =[
+        {id:1,nombre:'Gremio del Fuego',casas:3,cantidad:50,status:true},
+        {id:2,nombre:'Gremio del Agua',casas:2,cantidad:30,status:true},
+        {id:3,nombre:'Gremio del Viento',casas:4,cantidad:40,status:true},    
+    ]
     try {
-        SQL = gremios.map(gremio)
-            (console.log())
+        const SQL = gremios.map(gremio=>gremio);
+        console.log(SQL);
+        res.status(200).json(SQL);
     } catch (error) {
-        
+        console.error('Error al obtener')
     }
 }
 
