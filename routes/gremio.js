@@ -5,9 +5,11 @@ const { //ADD, UPDATE ELIMINAR, BUSCAR, AGREGAR MIEMBROS
     updateGremio,
     deleteGremio,
     searchGremio,
+    getGremios,
 } = require("../controllers/gremio.js");
 
-router.get('/:gremioID',searchGremio)
+router.get('/gremioID',searchGremio)
+router.get('/gremios',getGremios)
 router.post('/',createGremio)
 router.put('/gremioID',updateGremio)
 router.delete('/gremioID',deleteGremio)

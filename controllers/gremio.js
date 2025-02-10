@@ -1,12 +1,5 @@
 const {request,response} =require("express");
 
-const gremio = {
-    id:1,
-    nombre:'Gremio del Fuego',
-    casas: 3,
-    cantidad: 50,
-    status: true
-}
 
 const searchGremio = async(req,res)=>{
     const id = Number(req.params.id);
@@ -19,35 +12,39 @@ const searchGremio = async(req,res)=>{
 
 const createGremio = async(req,res)=>{
     const nuevoGremio = {
-        id: gremio.length + 1,
+        id: gremios.length + 1,
         nombre:req.body.nombre,
         casas: req.body.casas,
         cantidad: req.body.cantidad,
         status: true
     }
-    gremio.push(nuevoGremio)
+    gremios.push(nuevoGremio)
     res.status(201).json(nuevoGremio);
 }
 
 const updateGremio = async(req,res)=>{
     const id = Number(req.params.id)
-    const index = findIndex(gremio => gremio.id === id)
+    const index = gremios.findIndex(gremio => gremio.id === id)
+    if(index === -1 )
+        return res.status(400).json({message:'Error'})
     const updateGremio={
-        id:gremio[id].id,
+        id:gremios[id].id,
         nombre:req.body.nombre,
         casas: req.body.casas,
         cantidad: req.body.cantidad,
         status: true
     }
-    gremio[index] = updateGremio
+    gremios[index] = updateGremio
     res.status(200).json('update')
 }
 
 const deleteGremio = async(res,req)=>{
     const id = Number(req.params.id);
-    const index = findIndex(gremio => gremio.id === id)
+    const index = gremios.findIndex(gremio => gremio.id === id)
+    if(index === -1)
+        return res.status(400).json({message:'Error'})
     gremio.splice(index,1)
-    res.status(200).json(gremio)
+    res.status(200).json({message:'Eliminado'})
 }
 
 const getAllMiembros = async(res,req)=>{
@@ -55,17 +52,11 @@ const getAllMiembros = async(res,req)=>{
 }
 
 const getGremios=async(res,req)=>{
-    const gremios =[
-        {id:1,nombre:'Gremio del Fuego',casas:3,cantidad:50,status:true},
-        {id:2,nombre:'Gremio del Agua',casas:2,cantidad:30,status:true},
-        {id:3,nombre:'Gremio del Viento',casas:4,cantidad:40,status:true},    
-    ]
-    try {
-        const SQL = gremios.map(gremio=>gremio);
-        console.log(SQL);
-        res.status(200).json(SQL);
-    } catch (error) {
-        console.error('Error al obtener')
+    try{
+        res.status(200).json(gremios)
+    } catch (error){
+        console.error('Error al obtener gremios', error)
+        res.status(500).json({message:'Error'})
     }
 }
 
@@ -75,5 +66,6 @@ module.exports = {
     updateGremio,
     createGremio,
     searchGremio,
+    getGremios
 }
 //ID,NOMBRE,CASAS,CANTIDAD,STATUS
