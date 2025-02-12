@@ -3,16 +3,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-
-
-import indexRouter from './routes/index.js';
-import usersRouter from './routes/users.js';
-import estudiantes from './routes/estudiantes.js';
-import hechizero from './routes/hechizeros.js';
-import gremio from './routes/gremio.js';
+var indexRouter = require('./routes/index.js');
+var usersRouter = require('./routes/users.js');
+var estudiantes = require('./routes/estudiantes.js');
+var hechizero = require('./routes/hechizeros.js');
+var gremio = require('./routes/gremio.js');
 
 require('dotenv').config()
-console.log(ejemplo.env)
+console.log(process.env)
 
 const connectDataB = async()=>{
   try{
