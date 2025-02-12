@@ -6,7 +6,7 @@ const { //ADD, UPDATE ELIMINAR, BUSCAR, AGREGAR MIEMBROS
     updateHechizero,
     deleteHechizero,
     searchHechizero,
-} = require("../controllers/hechizeros.js");
+} = require("../controllers/hechizeros.jsx");
 
 router.get('/hechizeros',searchHechizeros)
 router.get('/hechizeroID',searchHechizero)

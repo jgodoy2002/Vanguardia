@@ -1,9 +1,9 @@
-import express from 'express';
-import path from 'path';
-import cookieParser from 'cookie-parser';
-import logger from 'morgan';
-import mongoose from 'mongoose';
-import createError from 'http-errors';
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+var mongoose = require('mongoose');
+
 
 import indexRouter from './routes/index.js';
 import usersRouter from './routes/users.js';
